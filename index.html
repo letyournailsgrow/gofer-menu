@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+		<meta name="description" content=""/>
+		<meta name="author" content=""/>
+		<!--<link rel="icon" href="favicon.ico"> -->
+		<title>Gofer Tree Menu</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">	
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		
+		<link rel="stylesheet" href="gofer.css" />
+
+	</head>
+
+	<body>
+
+		<!-- Fixed navbar -->
+		<nav class="navbar navbar-light bg-faded">
+			<a class="navbar-brand" href="#">Gofer Tree Menu</a>
+			<ul class="nav navbar-nav pull-right">
+				<li class="nav-item">
+					<a class="nav-link" href="#">Despre</a>
+				</li>
+			</ul>
+		</nav>
+		
+		<div class="container-fluid">
+	        <div id="gofer-menu"></div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="tree-menu.js"></script>
+
+		<script>
+			var menu = [
+					{
+						id:1,
+						name:"Item 1",
+						description:"description for item 1",
+						title:"description for item 1",
+						link:"#"
+					},
+					{
+						id:2,
+						name:"Item 2",
+						description:"description for item 2",
+						title:"description for item 2",
+						link:"#",
+						items:[
+								{
+									id:3,
+									name:"Subitem 2.1",
+									description:"description for item 2.1",
+									title:"description for item 2.1",
+									link:"#"
+								},
+								{
+									id:4,
+									name:"Subitem 2.2",
+									description:"description for item 2.2",
+									title:"description for item 2.2",
+									link:"#"
+								},
+								{
+									id:5,
+									name:"Subitem 2.3",
+									description:"description for item 2.3",
+									title:"description for item 2.3",
+									link:"#"
+								},
+						]
+					},
+					{
+						id:6,
+						name:"Item 3",
+						description:"description for item 3",
+						title:"description for item 3",
+						link:"#",
+						items:[
+								{
+									id:7,
+									name:"Subitem 1",
+									description:"description for item 3.1",
+									title:"description for item 3.1",
+									link:"#"
+								},
+								{
+									id:8,
+									name:"Subitem 2",
+									description:"description for item 3.2",
+									title:"description for item 3.2",
+									link:"#"
+								},
+								{
+									id:9,
+									name:"Subitem 3",
+									description:"description for item 3.3",
+									title:"description for item 3.3",
+									link:"#"
+								},
+						]
+					}
+			];
+				
+			$("#gofer-menu").treeMenu({
+				menu: menu
+			});
+			
+		</script>
+	</html>
+	
