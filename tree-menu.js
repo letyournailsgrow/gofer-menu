@@ -52,6 +52,7 @@
 		 
 		var defaults = {
 			menu:{},
+			expandedItem:undefined,
 			onLeafClick:undefined
 		}
                 
@@ -128,6 +129,10 @@
 					$this.settings.onLeafClick(this.hash);	
 				}
 			});
+			
+			if ($this.settings.expandedItem!=undefined){
+				$($this.settings.expandedItem).collapse()
+			}
 				
 		}
 								
