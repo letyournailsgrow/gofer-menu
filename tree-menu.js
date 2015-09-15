@@ -63,14 +63,14 @@
 			if (hasChildren){
 				menuHtml = '<a href="#subitem'+menuItem.id+'" class="list-group-item" data-toggle="collapse" title="'+menuItem.title+'"> \
 								<i class="fa fa-chevron-circle-down fa-2x pull-left"></i>\
-								<h4 class="list-group-item-heading">'+menuItem.name+'</h4> \
-								'+((menuItem.description)?'<p class="list-group-item-text">'+menuItem.description+'</p>':'')+' \
+								<h4 class="list-group-item-heading truncate">'+menuItem.name+'</h4> \
+								'+((menuItem.description)?'<p class="list-group-item-text truncate">'+menuItem.description+'</p>':'')+' \
 							</a>';
 			}else{
 				menuHtml = '<a href="#" class="list-group-item" title="'+menuItem.title+'"> \
 								<i class="fa fa-chevron-circle-right fa-2x pull-right"></i>\
-								<h4 class="list-group-item-heading">'+menuItem.name+'</h4> \
-								'+((menuItem.description)?'<p class="list-group-item-text">'+menuItem.description+'</p>':'')+' \
+								<h4 class="list-group-item-heading truncate">'+menuItem.name+'</h4> \
+								'+((menuItem.description)?'<p class="list-group-item-text truncate">'+menuItem.description+'</p>':'')+' \
 							</a>';
 			}
 			
