@@ -110,7 +110,10 @@
 			];
 				
 			$("#gofer-menu").treeMenu({
-				menu: menu
+				menu: menu,
+				onLeafClick:function(itemId){
+					alert(itemId);
+				}
 			});
 			
 		</script>

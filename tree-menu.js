@@ -51,7 +51,8 @@
 		 */
 		 
 		var defaults = {
-			menu:{}
+			menu:{},
+			onLeafClick:undefined
 		}
                 
 		$this.settings = {}
@@ -67,7 +68,7 @@
 								'+((menuItem.description)?'<p class="list-group-item-text truncate">'+menuItem.description+'</p>':'')+' \
 							</a>';
 			}else{
-				menuHtml = '<a href="#" class="list-group-item" title="'+menuItem.title+'"> \
+				menuHtml = '<a href="#subitem'+menuItem.id+'" class="list-group-item leafItem" title="'+menuItem.title+'"> \
 								<i class="fa fa-chevron-circle-right fa-2x pull-right"></i>\
 								<h4 class="list-group-item-heading truncate">'+menuItem.name+'</h4> \
 								'+((menuItem.description)?'<p class="list-group-item-text truncate">'+menuItem.description+'</p>':'')+' \
@@ -121,6 +122,12 @@
 					$icon.removeClass('fa-chevron-circle-up').addClass('fa-chevron-circle-down');
 				}
 			});	
+			
+			$this.find(".leafItem").click(function(e){
+				if ($this.settings.onLeafClick!=undefined){
+					$this.settings.onLeafClick(this.hash);	
+				}
+			});
 				
 		}
 								
