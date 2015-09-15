@@ -53,25 +53,29 @@
 		var defaults = {
 			menu:{},
 			expandedItem:undefined,
+			autoNumber:false,
+			resetAutoNumberOnChildren:false,
 			onLeafClick:undefined
 		}
-                
+             
+		var currentItemIndex = 1;	
+			 
 		$this.settings = {}
 		
-		var generateItem = function(menuItem, hasChildren){
+		var generateItem = function(menuItem, hasChildren, prefix){
 			
 			var menuHtml = "";
-			
+			var numberChildren=(menuItem.hasOwnProperty("items"))?menuItem.items.length:0;
 			if (hasChildren){
 				menuHtml = '<a href="#subitem'+menuItem.id+'" class="list-group-item" data-toggle="collapse" title="'+menuItem.title+'"> \
 								<i class="fa fa-chevron-circle-down fa-2x pull-left"></i>\
-								<h4 class="list-group-item-heading truncate">'+menuItem.name+'</h4> \
+								<h4 class="list-group-item-heading truncate">'+menuItem.name+'&nbsp;&nbsp;<span class="badge">'+numberChildren+'</span></h4> \
 								'+((menuItem.description)?'<p class="list-group-item-text truncate">'+menuItem.description+'</p>':'')+' \
 							</a>';
 			}else{
 				menuHtml = '<a href="#subitem'+menuItem.id+'" class="list-group-item leafItem" title="'+menuItem.title+'"> \
 								<i class="fa fa-chevron-circle-right fa-2x pull-right"></i>\
-								<h4 class="list-group-item-heading truncate">'+menuItem.name+'</h4> \
+								<h4 class="list-group-item-heading truncate">'+($this.settings.autoNumber?prefix+". ":"")+menuItem.name+'</h4> \
 								'+((menuItem.description)?'<p class="list-group-item-text truncate">'+menuItem.description+'</p>':'')+' \
 							</a>';
 			}
@@ -82,9 +86,12 @@
 		var generateSubitems = function(menuSubitems){
 				
 			var menuHtml = "";
-			
+			if ($this.settings.resetAutoNumberOnChildren){
+				currentItemIndex=1;
+			}
 			$.each(menuSubitems, function( index, subItem ) {	
-					menuHtml += generateItem(subItem,false);
+					menuHtml += generateItem(subItem,false,currentItemIndex);
+					currentItemIndex++;
 			});
 			
 			return menuHtml;
@@ -97,15 +104,15 @@
 			var menu = $this.settings.menu;
 			
 			var menuHtml = "";
-				
+			
 			$.each( menu, function( index, menuItem ) {
 				if (menuItem.hasOwnProperty("items")){
-						menuHtml += generateItem(menuItem,true);
-						menuHtml += '<div class="collapse" id="subitem'+menuItem.id+'" style="margin-left:20px;">'+generateSubitems(menuItem["items"])+'</div>';
+						menuHtml += generateItem(menuItem,true,currentItemIndex);
+						menuHtml += '<div class="collapse" id="subitem'+menuItem.id+'" style="margin-left:20px;">'+generateSubitems(menuItem["items"],currentItemIndex)+'</div>';
 				}else{
-						menuHtml += generateItem(menuItem,false);
+						menuHtml += generateItem(menuItem,false,currentItemIndex);
+						currentItemIndex++;
 				}				
-							
 			});
 			
 		

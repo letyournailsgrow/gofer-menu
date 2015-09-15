@@ -49,7 +49,7 @@
 					},
 					{
 						id:2,
-						name:"Item 2",
+						name:"Item 2 (text lung text lung text lung text lung text lung text lung)",
 						description:"description for item 2",
 						title:"description for item 2",
 						link:"#",
@@ -112,6 +112,8 @@
 			$("#gofer-menu").treeMenu({
 				menu: menu,
 				expandedItem:window.location.hash,
+				autoNumber:true,
+				resetAutoNumberOnChildren:true,
 				onLeafClick:function(itemId){
 					alert(itemId);
 				}
